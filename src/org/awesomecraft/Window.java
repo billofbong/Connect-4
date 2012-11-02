@@ -22,6 +22,7 @@ public class Window extends JFrame implements ActionListener {
        for(int j = 0; j <= 6; j++) 
        {
 		fields[i][j] = new JTextField();
+		fields[i][j].setText(" ");
 		fields[i][j].setEditable(false);
 		if(def)
 		{	
@@ -48,16 +49,26 @@ public class Window extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-     JButton p = (JButton) e.getSource(); 
-     if(tx && fields[5][Integer.parseInt(p.getText()) - 1].equals(null))
+     JButton p = (JButton) e.getSource();
+     for(int i = 5; i >= 0; i--)
+     if(tx)
      {
-     fields[5][Integer.parseInt(p.getText()) - 1].setText("X");
-     } else if(!tx && fields[5][Integer.parseInt(p.getText()) - 1].equals(null))
+    	 if(fields[i][Integer.parseInt(p.getText()) - 1].getText().equals(" "))
+    	 {
+       fields[i][Integer.parseInt(p.getText()) - 1].setText("X");
+       tx = !tx;
+       break;
+    	 }
+     } 
+     else if(!tx)
      {
-     fields[5][Integer.parseInt(p.getText()) - 1].setText("O"); 
+    	 if(fields[i][Integer.parseInt(p.getText()) - 1].getText().equals(" "))
+    	 {
+       fields[i][Integer.parseInt(p.getText()) - 1].setText("O"); 
+       tx = !tx; 
+       break;
+    	 }
      }
-    
-     tx = !tx;
 		
 	}
 	public static void main(String args[])
