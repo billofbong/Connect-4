@@ -51,6 +51,7 @@ public class Window extends JFrame implements ActionListener {
 
      JButton p = (JButton) e.getSource();
      for(int i = 5; i >= 0; i--)
+     {
      if(tx)
      {
     	 if(fields[i][Integer.parseInt(p.getText()) - 1].getText().equals(" "))
@@ -69,7 +70,35 @@ public class Window extends JFrame implements ActionListener {
        break;
     	 }
      }
-		
+     
+	}
+     
+     for(int i = 0; i <= 4; i++)
+	  {
+      
+    	 for(int j = 0; j <= 6; j++) 
+       {
+    	 if(fields[i][j].getText().equals("X") && fields[i][j + 1].getText().equals("X") && fields[i][j + 2].getText().equals("X") && fields[i][j + 3].getText().equals("X"))
+    	 {
+    		 JOptionPane.showMessageDialog(null, "X Wins!");
+    	 }
+    	 if(fields[i][j].getText().equals("O") && fields[i][j + 1].getText().equals("O") && fields[i][j + 2].getText().equals("O") && fields[i][j + 3].getText().equals("O"))
+    	 {
+    		 JOptionPane.showMessageDialog(null, "O Wins!");
+    	 }
+    	 if(fields[i][j].getText().equals("X") && fields[i - 1][j].getText().equals("X") && fields[i - 2][j].getText().equals("X") && fields[i - 3][j].getText().equals("X"))
+    	 {
+    		 JOptionPane.showMessageDialog(null, "X Wins!");
+    	 }
+    	 if(fields[i][j].getText().equals("O") && fields[i - 1][j].getText().equals("O") && fields[i - 2][j].getText().equals("O") && fields[i - 3][j].getText().equals("O"))
+    	 {
+    		 JOptionPane.showMessageDialog(null, "O Wins!");
+    	 }
+    	 
+       }
+	  
+	  }
+     
 	}
 	public static void main(String args[])
 	{
